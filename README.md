@@ -16,7 +16,18 @@ npm install --save nearley
 npm install --save-dev parcel-transformer-nearley
 ```
 
-2. Create `.parcelrc` next to your `package.json`, with the following json content in it:
+2. Add the following entry to your `package.json`:
+
+```json
+"alias": {
+   "process": {
+   "global": "process"
+   }
+}
+```
+
+
+3. Create `.parcelrc` next to your `package.json`, with the following content in it:
 
 ```json
 {
@@ -27,7 +38,7 @@ npm install --save-dev parcel-transformer-nearley
 }
 ```
 
-3. Now you can import `*.ne` files from javascript:
+4. Now you can import `*.ne` files from javascript:
 
 ```js
 import { default as nearley } from "nearley"
