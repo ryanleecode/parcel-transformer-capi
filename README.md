@@ -4,17 +4,19 @@ A Parcel plugin which adds support for importing compiled Nearly grammars. This 
 
 ## Usage
 
-1. Install the package with yarn or with npm:
+1. Install `nearley` and `parcel-transformer-nearley` with yarn or with npm:
 
 ```
+yarn add nearley
 yarn add -D parcel-transformer-nearley
 ```
 
 ```
+npm install --save nearley
 npm install --save-dev parcel-transformer-nearley
 ```
 
-2. Create `.parcelrc` and copy the following json content to it:
+2. Create `.parcelrc` next to your `package.json`, with the following json content in it:
 
 ```json
 {
@@ -25,7 +27,7 @@ npm install --save-dev parcel-transformer-nearley
 }
 ```
 
-3. Now you can import *.ne files from javascript:
+3. Now you can import `*.ne` files from javascript:
 
 ```js
 import { default as nearley } from "nearley"
