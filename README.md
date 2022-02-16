@@ -20,9 +20,9 @@ npm install --save-dev parcel-transformer-nearley
 
 ```json
 "alias": {
-   "process": {
-   "global": "process"
-   }
+  "process": {
+    "global": "process"
+  }
 }
 ```
 
@@ -48,5 +48,6 @@ import grammar from "./grammar.ne"
 var parser = new nearley.Parser(grammar)
 
 parse.feed("text")
+// parser.results[0]
 // ...
 ```

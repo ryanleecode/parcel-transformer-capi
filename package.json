@@ -1,6 +1,6 @@
 {
     "name": "parcel-transformer-nearley",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "license": "NTP",
     "description": "Enable Parcel support for importing compiled Nearly grammars from Nearly files",
     "publishConfig": {
