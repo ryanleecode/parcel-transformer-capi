@@ -16,18 +16,7 @@ npm install --save nearley
 npm install --save-dev parcel-transformer-nearley
 ```
 
-2. Add the following entry to your `package.json`:
-
-```json
-"alias": {
-  "process": {
-    "global": "process"
-  }
-}
-```
-
-
-3. Create `.parcelrc` next to your `package.json`, with the following content in it:
+2. Create `.parcelrc` next to your `package.json`, with the following content in it:
 
 ```json
 {
@@ -38,7 +27,7 @@ npm install --save-dev parcel-transformer-nearley
 }
 ```
 
-4. Now you can import `*.ne` files from javascript:
+3. Now you can import `*.ne` files from javascript:
 
 ```js
 import { default as nearley } from "nearley"
@@ -47,7 +36,18 @@ import grammar from "./grammar.ne"
 
 var parser = new nearley.Parser(grammar)
 
-parse.feed("text")
+parser.feed("text")
 // parser.results[0]
 // ...
+```
+
+4. If you use TypeScript, you'll want to install `@types/nearley` and add a module type declaration somewhere in your project:
+
+`nearley.d.ts`
+
+```ts
+declare module "*.ne" {
+    const value: nearley.Grammar
+    export default value
+}
 ```
