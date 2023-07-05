@@ -1,27 +1,19 @@
 {
-    "name": "parcel-transformer-nearley",
-    "version": "1.0.5",
-    "license": "NTP",
-    "description": "Enable Parcel support for importing compiled Nearly grammars from Nearly files",
+    "name": "parcel-transformer-capi",
+    "version": "0.0.1",
+    "type": "module",
+    "description": "Enable Parcel support for Capi",
     "publishConfig": {
         "access": "public"
     },
-    "keywords": [
-        "parcel",
-        "plugin",
-        "transformer",
-        "grammar",
-        "nearley"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/mathieucaroff/parcel-transformer-nearley.git"
-    },
-    "main": "index.js",
+    "module": "index.js",
     "engines": {
         "parcel": ">=2.0.0"
     },
     "dependencies": {
-        "@parcel/plugin": "^2.3.1"
+        "@parcel/plugin": "^2.9.3"
+    },
+    "devDependencies": {
+        "@types/node": "^20.3.3"
     }
 }

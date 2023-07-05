@@ -1,30 +1,11 @@
-const { Transformer } = require("@parcel/plugin")
-const nearley = require("nearley")
-const nearleyCompile = require("nearley/lib/compile")
-const nearleyGenerate = require("nearley/lib/generate")
-const nearleyGrammar = require("nearley/lib/nearley-language-bootstrapped")
+import { Transformer } from "@parcel/plugin";
 
-module.exports = new Transformer({
-    async transform({ asset }) {
-        // parsing the asset
-        let grammarParser = new nearley.Parser(nearleyGrammar)
-        grammarParser.feed(await asset.getCode())
-        let grammarAst = grammarParser.results[0]
+export default new Transformer({
+  async transform({ asset }) {
+    const code = await asset.getCode();
+    const result = code.replace(/import (.*?) \"node:fs\"(.*?)\n/g, () => "");
 
-        // Nearley adds the path of the dependencies it finds to `alreadycompiled`
-        let alreadycompiled = []
-        let grammarInfoObject = nearleyCompile(grammarAst, {
-            args: [asset.filePath],
-            alreadycompiled,
-        })
-
-        for (let filePath of alreadycompiled) {
-            asset.invalidateOnFileChange(filePath)
-        }
-
-        let jsCode = nearleyGenerate(grammarInfoObject, "grammar")
-        asset.setCode(jsCode)
-        asset.type = "js"
-        return [asset]
-    },
-})
+    asset.setCode(result);
+    return [asset];
+  },
+});
